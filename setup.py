@@ -75,7 +75,7 @@ cy_ext = 'cpp'
 # https://github.com/numpy/numpy/blob/master/numpy/distutils/ccompiler.py
 OPT = get_config_vars('OPT')[0]
 os.environ['OPT'] = " ".join(
-    flag for flag in OPT.split() if flag != '-Wstrict-prototypes'
+    flag for flag in (OPT.split() if OPT else[]) if flag != '-Wstrict-prototypes'
 )
 
 # Checking for OpenMP support. Currently clang doesn't work with OpenMP,
